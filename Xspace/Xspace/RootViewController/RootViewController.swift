@@ -2,7 +2,8 @@
 //  RootViewController.swift
 //  Xspace
 //
-//  Created by Admin on 6/11/25.
+//  Created by Igor Malasevschi on 6/7/25.
+//  Copyright © 2025 Xspace. All rights reserved.
 //
 
 import UIKit
@@ -36,7 +37,7 @@ final class RootViewController: UIViewController {
             launchesVC.didMove(toParent: self)
             
         } catch {
-            print("API init failed: \(error)")
+            fatalError("API init failed: \(error)")
         }
     }
 }

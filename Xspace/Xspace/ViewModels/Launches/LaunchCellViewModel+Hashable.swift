@@ -1,10 +1,11 @@
 //
 //  LaunchCellViewModel+Hashable.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 11.06.2025.
 //  Copyright © 2025 Xspace. All rights reserved.
 //
+
 
 
 import Foundation

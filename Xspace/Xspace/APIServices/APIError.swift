@@ -1,6 +1,6 @@
 //
 //  APIError.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/7/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -15,4 +15,22 @@ enum APIError: Error {
     case decodingFailed(underlying: Error)
     case stringDecodingFailed
     case imageDecodingFailed
+    case underlying(Error)
+    
+    var userMessage: String {
+        switch self {
+        case .invalidBaseURL:
+            return "Internal error: Invalid base URL."
+        case .badStatusCode(let code):
+            return "Server returned an error (code: \(code))."
+        case .decodingFailed:
+            return "Failed to decode the server response."
+        case .stringDecodingFailed:
+            return "Unable to decode a string from data."
+        case .imageDecodingFailed:
+            return "Failed to decode image data."
+        case .underlying(let error):
+            return error.localizedDescription
+        }
+    }
 }

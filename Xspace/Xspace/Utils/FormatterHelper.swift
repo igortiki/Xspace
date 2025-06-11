@@ -1,5 +1,5 @@
 //
-//  DateFormatterHelper.swift
+//  FormatterHelper.swift
 //  Xspace
 //
 //  Created by Igor Malasevschi on 6/9/25.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DateFormatterHelper {
+final class FormatterHelper {
     
     // MARK: - Date Formatting
     static func formattedDate(from timestamp: Int) -> String {
@@ -44,5 +44,13 @@ final class DateFormatterHelper {
         let now = Date()
         let days = Calendar.current.dateComponents([.day], from: now, to: launchDate).day ?? 0
         return String(format: "%+d", days)
+    }
+    
+    static func formattedValuation(_ valuation: Int64) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: valuation)) ?? "\(valuation)"
     }
 }

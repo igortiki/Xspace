@@ -1,6 +1,6 @@
 //
 //  FiltersViewModel.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/10/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -17,7 +17,7 @@ final class FiltersViewModel: FiltersViewModelProtocol {
     }
 
     var availableYears: [Int] {
-        Array(2006...2025)
+        filterModel.availableYears
     }
 
     var launchYearsLabelText: String { "Launch Years" }

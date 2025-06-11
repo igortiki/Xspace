@@ -1,6 +1,6 @@
 //
 //  FiltersViewController.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/10/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -206,9 +206,7 @@ extension FiltersViewController: UICollectionViewDataSource, UICollectionViewDel
         let year = viewModel.availableYears[indexPath.item]
 
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: YearsFilterCell.reuseID,
-            for: indexPath
-        ) as? YearsFilterCell else {
+            withReuseIdentifier: YearsFilterCell.reuseID, for: indexPath) as? YearsFilterCell else {
             assertionFailure("Failed to dequeue YearsFilterCell")
             return UICollectionViewCell()
         }

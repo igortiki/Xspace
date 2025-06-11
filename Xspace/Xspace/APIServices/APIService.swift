@@ -1,6 +1,6 @@
 //
 //  APIService.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/7/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -13,7 +13,7 @@ final class APIService: APIServiceProtocol {
     
     // MARK: - Properties
     private(set) var baseURL: URL
-    private(set) var session: URLSessionProtocol
+    private(set) var session: any URLSessionProtocol
     
     // MARK: - Initialization
     init(baseURL: URL?, session: URLSessionProtocol) throws {
@@ -44,6 +44,7 @@ final class APIService: APIServiceProtocol {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             return try decoder.decode(T.self, from: data)
         } catch {
             throw APIError.decodingFailed(underlying: error)

@@ -1,6 +1,6 @@
 //
 //  LaunchesViewModel.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/7/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -10,6 +10,7 @@ import Foundation
 
 final class LaunchesViewModel: LaunchesViewModelProtocol {
     
+
     // MARK: - Properties
     private(set) var apiService: APIServiceProtocol
     
@@ -20,26 +21,22 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
     
     private(set) var currentFilters: LaunchFiltersModel = .empty
     
-    var onLaunchesUpdated: (() -> Void)?
+    var onViewStateChange: ((LoadState<Bool>) -> Void)?
     
     var launchesSectionTitle: String {
         "Launches"
     }
     
-    
-    private var cellViewModels: [LaunchCellViewModel] = [] {
-        didSet {
-            handleUpdate()
-        }
+    var emptyLaunchesText: String {
+        "No launches found."
     }
     
-    private func handleUpdate() {
-        Task {
-            await MainActor.run { [weak self] in
-                self?.onLaunchesUpdated?()
-            }
-        }
+    var retryButtonText: String {
+        "Retry"
     }
+    
+    private var cellViewModels: [LaunchCellViewModel] = []
+    
     
     var enrichedLaunchesCount: Int {
         return cellViewModels.count
@@ -75,6 +72,11 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
         
         isLoading = true
         
+        await MainActor.run {
+            onViewStateChange?(.loading)
+        }
+        
+        
         do {
             let launchResponse = try await fetchLaunchesPage(reset: reset, filters: filters)
             
@@ -88,8 +90,18 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
             }
             
             handleNewPage(enriched, response: launchResponse)
+            
+            await MainActor.run { [weak self] in
+                guard let self = self else { return }
+                onViewStateChange?(.loaded(self.cellViewModels.isEmpty))
+            }
         } catch {
-            print("Error fetching launches or rockets: \(error)")
+            
+            let apiError = (error as? APIError) ?? .underlying(error)
+            
+            await MainActor.run {
+                onViewStateChange?(.error(apiError.userMessage))
+            }
         }
         
         isLoading = false

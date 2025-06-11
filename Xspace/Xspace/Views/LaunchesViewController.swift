@@ -1,6 +1,6 @@
 //
 //  LaunchesViewController.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/8/25.
 //  Copyright © 2025 Xspace. All rights reserved.
@@ -48,6 +48,8 @@ final class LaunchesViewController: UIViewController {
     private let titleLabel = UILabel()
     private let filterButton = UIButton(type: .system)
     
+    private let stateView = StateView()
+    
     private let companySectionLabel = UILabel()
     private let companyDescriptionLabel = UILabel()
     private var headerContainer = UIStackView()
@@ -93,8 +95,18 @@ final class LaunchesViewController: UIViewController {
         setupLayout()
         
         setupBindings()
-        showFooterLoadingIndicator()
         fetchData()
+    }
+    
+    private func setupStateView() {
+        view.addSubview(stateView)
+        stateView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stateView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stateView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stateView.topAnchor.constraint(equalTo: headerContainer.bottomAnchor),
+            stateView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     private func fetchData() {
@@ -103,31 +115,6 @@ final class LaunchesViewController: UIViewController {
             async let launchesTask: () = launchesViewModel.loadNextPage()
             
             _ = await (companyTask, launchesTask)
-            hideFooterLoadingIndicator()
-        }
-    }
-    
-    // MARK: - Bindings
-    private func setupBindings() {
-        companyViewModel.onCompanyInfoUpdated = { [weak self] formattedText in
-            guard let self = self else { return }
-            self.companyDescriptionLabel.text = formattedText
-        }
-        
-        
-        launchesViewModel.onLaunchesUpdated = { [weak self] in
-            guard let self = self else { return }
-            
-            var snapshot = NSDiffableDataSourceSnapshot<Section, LaunchCellViewModel>()
-            snapshot.appendSections([.main])
-            
-            // You need access to all current cell view models
-            for index in 0..<self.launchesViewModel.enrichedLaunchesCount {
-                let vm = self.launchesViewModel.cellViewModel(atIndex: index)
-                snapshot.appendItems([vm])
-            }
-            
-            self.dataSource.apply(snapshot, animatingDifferences: false)
         }
     }
     
@@ -137,6 +124,7 @@ final class LaunchesViewController: UIViewController {
         setupCompanyHeader()
         setupTableView()
         setupBottomSection()
+        setupStateView()
     }
     
     private func setupTopBar() {
@@ -278,18 +266,81 @@ final class LaunchesViewController: UIViewController {
         ])
     }
     
-    private func showFooterLoadingIndicator() {
-        let spinner = UIActivityIndicatorView(style: .medium)
-        spinner.startAnimating()
-        spinner.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
-        tableView.tableFooterView = spinner
-    }
-    
-    private func hideFooterLoadingIndicator() {
-        tableView.tableFooterView = nil
-    }
 }
 
+// MARK: - ViewModel Bindings & State Handling
+extension LaunchesViewController {
+    private func setupBindings() {
+        companyViewModel.onViewStateChange = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .loading: break
+            case .loaded(let formattedText):
+                self.handleCompanyData(formattedText)
+            case .error(let message):
+                self.handleCompanyData(message)
+            }
+        }
+    
+        launchesViewModel.onViewStateChange = { [weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .loading:
+                self.handleLaunchesLoading()
+            case .loaded(let isEmpty):
+                self.handleLoadedState(isEmpty: isEmpty)
+            case .error(let message):
+                self.handleLaunchesError(message: message)
+            }
+        }
+    }
+    
+   private func handleCompanyData(_ text: String) {
+        companyDescriptionLabel.text = text
+    }
+    
+    private func handleLaunchesLoading() {
+        showFooterLoadingIndicator()
+        stateView.dismiss()
+    }
+    
+    private func handleLoadedState(isEmpty: Bool) {
+        hideFooterLoadingIndicator()
+        
+        if isEmpty {
+            stateView.show(message: launchesViewModel.emptyLaunchesText) {
+                self.stateView.dismiss()
+            }
+        }
+        
+        reloadData()
+    }
+    
+    private func handleLaunchesError(message: String) {
+        hideFooterLoadingIndicator()
+        
+        stateView.show(message: message, buttonTitle: launchesViewModel.retryButtonText) {
+            self.stateView.dismiss()
+            Task {
+                await self.launchesViewModel.loadNextPage()
+            }
+        }
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, LaunchCellViewModel>()
+        snapshot.appendSections([.main])
+        
+        // You need access to all current cell view models
+        for index in 0..<self.launchesViewModel.enrichedLaunchesCount {
+            let vm = self.launchesViewModel.cellViewModel(atIndex: index)
+            snapshot.appendItems([vm])
+        }
+        
+        self.dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
 
 // MARK: - UITableViewDelegate
 extension LaunchesViewController: UITableViewDelegate {
@@ -301,8 +352,6 @@ extension LaunchesViewController: UITableViewDelegate {
         guard offsetY > contentHeight - frameHeight - 100 else { return }
         guard !launchesViewModel.isLoading else { return }
         
-        showFooterLoadingIndicator()
-        
         Task {
             await launchesViewModel.loadNextPage()
             hideFooterLoadingIndicator()
@@ -310,12 +359,29 @@ extension LaunchesViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Actions
+// MARK: - Section Enum
 extension LaunchesViewController {
+    private enum Section {
+        case main
+    }
+}
+
+// MARK: - UI Helpers
+extension LaunchesViewController {
+    private func showFooterLoadingIndicator() {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
+        tableView.tableFooterView = spinner
+    }
+    
+    private func hideFooterLoadingIndicator() {
+        tableView.tableFooterView = nil
+    }
+    
     private func presentFilters() {
         let currentFilters = launchesViewModel.currentFilters
-        print(currentFilters)
-        
+
         let filtersViewModel = FiltersViewModel(filterModel: currentFilters)
         let filtersVC = FiltersViewController(viewModel: filtersViewModel)
         
@@ -332,12 +398,5 @@ extension LaunchesViewController {
         }
         
         present(filtersVC, animated: true)
-    }
-}
-
-// MARK: - Section Enum
-extension LaunchesViewController {
-    private enum Section {
-        case main
     }
 }

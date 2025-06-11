@@ -1,11 +1,12 @@
 //
 //  LaunchCellViewModel.swift
-//  Devskiller
+//  Xspace
 //
 //  Created by Igor Malasevschi on 6/9/25.
 //  Copyright © 2025 Xspace. All rights reserved.
 //
 
+// LaunchCellViewModel.swift
 import UIKit
 
 
@@ -45,20 +46,20 @@ final class LaunchCellViewModel: LaunchCellViewModelProtocol {
     }
     
     var dateTimeString: String {
-        let date = DateFormatterHelper.formattedDate(from: enrichedLaunch.launch.dateUnix)
-        let time = DateFormatterHelper.formattedTime(from: enrichedLaunch.launch.dateUnix)
+        let date = FormatterHelper.formattedDate(from: enrichedLaunch.launch.dateUnix)
+        let time = FormatterHelper.formattedTime(from: enrichedLaunch.launch.dateUnix)
         return "Date/Time: \(date) at \(time)"
     }
     
     var daysSinceText: String {
-        let signed = DateFormatterHelper.signedDaysDifference(from: enrichedLaunch.launch.dateUnix)
+        let signed = FormatterHelper.signedDaysDifference(from: enrichedLaunch.launch.dateUnix)
         return "Days: \(signed)"
     }
     
     var fromNowText: String {
         let launchDate = Date(timeIntervalSince1970: TimeInterval(enrichedLaunch.launch.dateUnix))
         let word = launchDate < Date() ? "Since" : "From"
-        let relative = DateFormatterHelper.relativeDate(from: enrichedLaunch.launch.dateUnix)
+        let relative = FormatterHelper.relativeDate(from: enrichedLaunch.launch.dateUnix)
         return "\(word) now: \(relative)"
     }
     
