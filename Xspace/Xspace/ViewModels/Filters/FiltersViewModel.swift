@@ -1,0 +1,55 @@
+//
+//  FiltersViewModel.swift
+//  Devskiller
+//
+//  Created by Igor Malasevschi on 6/10/25.
+//  Copyright © 2025 Xspace. All rights reserved.
+//
+
+
+final class FiltersViewModel: FiltersViewModelProtocol {
+    
+    private(set) var filterModel: LaunchFiltersModel
+
+    
+    init(filterModel: LaunchFiltersModel = .empty) {
+        self.filterModel = filterModel
+    }
+
+    var availableYears: [Int] {
+        Array(2006...2025)
+    }
+
+    var launchYearsLabelText: String { "Launch Years" }
+
+    var launchSuccessLabelText: String { "Launch Success" }
+
+    var sortOrderLabelText: String { "Sort Order" }
+
+    var applyButtonTitle: String { "Apply Filters" }
+
+    var successOptions: [String] { ["All", "Success only"] }
+
+    var sortOrderOptions: [String] { ["ASC", "DESC"] }
+
+
+    var selectedYears: Set<Int> {
+        get { Set(filterModel.selectedYears) }
+        set { filterModel.selectedYears = Array(newValue).sorted() }
+    }
+
+    var successOnly: Bool {
+        get { filterModel.successOnly }
+        set { filterModel.successOnly = newValue }
+    }
+
+    var sortOrderAscending: Bool {
+        get { filterModel.sortOrderAscending }
+        set { filterModel.sortOrderAscending = newValue }
+    }
+
+    func resetFilters() {
+        filterModel = .empty
+    }
+}
+
