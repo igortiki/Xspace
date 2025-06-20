@@ -1,13 +1,13 @@
 //
-//  XspaceUITests.swift
-//  XspaceUITests
+//  XSpaceUITests.swift
+//  XSpaceUITests
 //
-//  Created by Admin on 6/11/25.
+//  Created by Igor Malasevschi on 17.06.2025.
 //
 
 import XCTest
 
-final class XspaceUITests: XCTestCase {
+final class XSpaceUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,9 +33,11 @@ final class XspaceUITests: XCTestCase {
 
     @MainActor
     func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
+                XCUIApplication().launch()
+            }
         }
     }
 }

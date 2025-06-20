@@ -1,15 +1,14 @@
 //
 //  LaunchCellViewModel.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/9/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
-// LaunchCellViewModel.swift
 import UIKit
 
-
+@MainActor
 final class LaunchCellViewModel: LaunchCellViewModelProtocol {
     
     // MARK: - Properties
@@ -18,10 +17,13 @@ final class LaunchCellViewModel: LaunchCellViewModelProtocol {
     private let enrichedLaunch: EnrichedLaunch
     private(set) var missionPatchImage: UIImage?
     
+    nonisolated let launchID: String
+    
     // MARK: - Initialization
     init(enrichedLaunch: EnrichedLaunch, apiService: APIServiceProtocol) {
         self.enrichedLaunch = enrichedLaunch
         self.apiService = apiService
+        self.launchID = enrichedLaunch.launch.id
     }
     
     // MARK: - Computed Properties
@@ -65,6 +67,7 @@ final class LaunchCellViewModel: LaunchCellViewModelProtocol {
     
     // MARK: - Image Handling
     
+    
     /// Fetches mission patch image from URL and stores it
     private func fetchAndStoreMissionPatchImage(from urlString: String?) async -> UIImage? {
         guard let urlString = urlString,
@@ -98,4 +101,3 @@ final class LaunchCellViewModel: LaunchCellViewModelProtocol {
         imageLoadTask = nil
     }
 }
-

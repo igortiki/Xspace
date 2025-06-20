@@ -1,15 +1,15 @@
 //
 //  MockURLSession.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/12/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
-@testable import Xspace
+@testable import XSpace
 import Foundation
 
-final class MockURLSession: URLSessionProtocol {
+final class MockURLSession: URLSessionProtocol, @unchecked Sendable {
     var nextData: Data?
     var nextResponse: URLResponse?
     var nextError: Error?
@@ -23,12 +23,15 @@ final class MockURLSession: URLSessionProtocol {
             throw APIError.invalidBaseURL
         }
 
-        let response = nextResponse ?? HTTPURLResponse(
-            url: url,
-            statusCode: 200,
-            httpVersion: nil,
-            headerFields: nil
-        ) ?? URLResponse()
+        let response: URLResponse
+
+            if let provided = nextResponse {
+                response = provided
+            } else if let fallback = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil) {
+                response = fallback
+            } else {
+                throw APIError.badStatusCode(0)
+            }
 
         return (nextData ?? Data(), response)
     }

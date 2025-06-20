@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  Xspace
+//  XSpace
 //
-//  Created by Admin on 6/11/25.
+//  Created by Igor Malasevschi on 17.06.2025.
 //
 
 import UIKit

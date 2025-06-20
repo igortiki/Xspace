@@ -1,11 +1,12 @@
 //
 //  CompanyViewModelProtocol.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/9/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
+@MainActor
 protocol CompanyViewModelProtocol: AnyObject {
     var companyName: String { get }
     var topHeaderSection: String { get }

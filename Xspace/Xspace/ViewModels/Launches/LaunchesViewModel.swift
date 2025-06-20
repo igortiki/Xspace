@@ -1,16 +1,16 @@
 //
 //  LaunchesViewModel.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/7/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 import Foundation
 
+@MainActor
 final class LaunchesViewModel: LaunchesViewModelProtocol {
     
-
     // MARK: - Properties
     private(set) var apiService: APIServiceProtocol
     
@@ -72,10 +72,7 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
         
         isLoading = true
         
-        await MainActor.run {
-            onViewStateChange?(.loading)
-        }
-        
+        onViewStateChange?(.loading)
         
         do {
             let launchResponse = try await fetchLaunchesPage(reset: reset, filters: filters)
@@ -91,17 +88,13 @@ final class LaunchesViewModel: LaunchesViewModelProtocol {
             
             handleNewPage(enriched, response: launchResponse)
             
-            await MainActor.run { [weak self] in
-                guard let self = self else { return }
-                onViewStateChange?(.loaded(self.cellViewModels.isEmpty))
-            }
+            onViewStateChange?(.loaded(self.cellViewModels.isEmpty))
         } catch {
             
             let apiError = (error as? APIError) ?? .underlying(error)
             
-            await MainActor.run {
-                onViewStateChange?(.error(apiError.userMessage))
-            }
+            onViewStateChange?(.error(apiError.userMessage))
+            
         }
         
         isLoading = false

@@ -7,75 +7,75 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		842C27D72DF9EB4200F7DCF6 /* PBXContainerItemProxy */ = {
+		F9CC003C2E014FDD00A7644D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 842C27B82DF9EB4100F7DCF6 /* Project object */;
+			containerPortal = F9CC001D2E014FDB00A7644D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 842C27BF2DF9EB4100F7DCF6;
-			remoteInfo = Xspace;
+			remoteGlobalIDString = F9CC00242E014FDB00A7644D;
+			remoteInfo = XSpace;
 		};
-		842C27E12DF9EB4200F7DCF6 /* PBXContainerItemProxy */ = {
+		F9CC00462E014FDD00A7644D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 842C27B82DF9EB4100F7DCF6 /* Project object */;
+			containerPortal = F9CC001D2E014FDB00A7644D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 842C27BF2DF9EB4100F7DCF6;
-			remoteInfo = Xspace;
+			remoteGlobalIDString = F9CC00242E014FDB00A7644D;
+			remoteInfo = XSpace;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		842C27C02DF9EB4100F7DCF6 /* Xspace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xspace.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		842C27D62DF9EB4200F7DCF6 /* XspaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		842C27E02DF9EB4200F7DCF6 /* XspaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XspaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CC00252E014FDB00A7644D /* XSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CC003B2E014FDD00A7644D /* XSpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XSpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CC00452E014FDD00A7644D /* XSpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XSpaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		842C27E82DF9EB4200F7DCF6 /* Exceptions for "Xspace" folder in "Xspace" target */ = {
+		F9CC004D2E014FDD00A7644D /* Exceptions for "XSpace" folder in "XSpace" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 842C27BF2DF9EB4100F7DCF6 /* Xspace */;
+			target = F9CC00242E014FDB00A7644D /* XSpace */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		842C27C22DF9EB4100F7DCF6 /* Xspace */ = {
+		F9CC00272E014FDB00A7644D /* XSpace */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				842C27E82DF9EB4200F7DCF6 /* Exceptions for "Xspace" folder in "Xspace" target */,
+				F9CC004D2E014FDD00A7644D /* Exceptions for "XSpace" folder in "XSpace" target */,
 			);
-			path = Xspace;
+			path = XSpace;
 			sourceTree = "<group>";
 		};
-		842C27D92DF9EB4200F7DCF6 /* XspaceTests */ = {
+		F9CC003E2E014FDD00A7644D /* XSpaceTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = XspaceTests;
+			path = XSpaceTests;
 			sourceTree = "<group>";
 		};
-		842C27E32DF9EB4200F7DCF6 /* XspaceUITests */ = {
+		F9CC00482E014FDD00A7644D /* XSpaceUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = XspaceUITests;
+			path = XSpaceUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		842C27BD2DF9EB4100F7DCF6 /* Frameworks */ = {
+		F9CC00222E014FDB00A7644D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27D32DF9EB4200F7DCF6 /* Frameworks */ = {
+		F9CC00382E014FDD00A7644D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27DD2DF9EB4200F7DCF6 /* Frameworks */ = {
+		F9CC00422E014FDD00A7644D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,22 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		842C27B72DF9EB4100F7DCF6 = {
+		F9CC001C2E014FDB00A7644D = {
 			isa = PBXGroup;
 			children = (
-				842C27C22DF9EB4100F7DCF6 /* Xspace */,
-				842C27D92DF9EB4200F7DCF6 /* XspaceTests */,
-				842C27E32DF9EB4200F7DCF6 /* XspaceUITests */,
-				842C27C12DF9EB4100F7DCF6 /* Products */,
+				F9CC00272E014FDB00A7644D /* XSpace */,
+				F9CC003E2E014FDD00A7644D /* XSpaceTests */,
+				F9CC00482E014FDD00A7644D /* XSpaceUITests */,
+				F9CC00262E014FDB00A7644D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		842C27C12DF9EB4100F7DCF6 /* Products */ = {
+		F9CC00262E014FDB00A7644D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				842C27C02DF9EB4100F7DCF6 /* Xspace.app */,
-				842C27D62DF9EB4200F7DCF6 /* XspaceTests.xctest */,
-				842C27E02DF9EB4200F7DCF6 /* XspaceUITests.xctest */,
+				F9CC00252E014FDB00A7644D /* XSpace.app */,
+				F9CC003B2E014FDD00A7644D /* XSpaceTests.xctest */,
+				F9CC00452E014FDD00A7644D /* XSpaceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,134 +108,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		842C27BF2DF9EB4100F7DCF6 /* Xspace */ = {
+		F9CC00242E014FDB00A7644D /* XSpace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 842C27E92DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "Xspace" */;
+			buildConfigurationList = F9CC004E2E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpace" */;
 			buildPhases = (
-				842C27BC2DF9EB4100F7DCF6 /* Sources */,
-				842C27BD2DF9EB4100F7DCF6 /* Frameworks */,
-				842C27BE2DF9EB4100F7DCF6 /* Resources */,
+				F9CC00212E014FDB00A7644D /* Sources */,
+				F9CC00222E014FDB00A7644D /* Frameworks */,
+				F9CC00232E014FDB00A7644D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				842C27C22DF9EB4100F7DCF6 /* Xspace */,
+				F9CC00272E014FDB00A7644D /* XSpace */,
 			);
-			name = Xspace;
+			name = XSpace;
 			packageProductDependencies = (
 			);
-			productName = Xspace;
-			productReference = 842C27C02DF9EB4100F7DCF6 /* Xspace.app */;
+			productName = XSpace;
+			productReference = F9CC00252E014FDB00A7644D /* XSpace.app */;
 			productType = "com.apple.product-type.application";
 		};
-		842C27D52DF9EB4200F7DCF6 /* XspaceTests */ = {
+		F9CC003A2E014FDD00A7644D /* XSpaceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 842C27EE2DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "XspaceTests" */;
+			buildConfigurationList = F9CC00532E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpaceTests" */;
 			buildPhases = (
-				842C27D22DF9EB4200F7DCF6 /* Sources */,
-				842C27D32DF9EB4200F7DCF6 /* Frameworks */,
-				842C27D42DF9EB4200F7DCF6 /* Resources */,
+				F9CC00372E014FDD00A7644D /* Sources */,
+				F9CC00382E014FDD00A7644D /* Frameworks */,
+				F9CC00392E014FDD00A7644D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				842C27D82DF9EB4200F7DCF6 /* PBXTargetDependency */,
+				F9CC003D2E014FDD00A7644D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				842C27D92DF9EB4200F7DCF6 /* XspaceTests */,
+				F9CC003E2E014FDD00A7644D /* XSpaceTests */,
 			);
-			name = XspaceTests;
+			name = XSpaceTests;
 			packageProductDependencies = (
 			);
-			productName = XspaceTests;
-			productReference = 842C27D62DF9EB4200F7DCF6 /* XspaceTests.xctest */;
+			productName = XSpaceTests;
+			productReference = F9CC003B2E014FDD00A7644D /* XSpaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		842C27DF2DF9EB4200F7DCF6 /* XspaceUITests */ = {
+		F9CC00442E014FDD00A7644D /* XSpaceUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 842C27F12DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "XspaceUITests" */;
+			buildConfigurationList = F9CC00562E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpaceUITests" */;
 			buildPhases = (
-				842C27DC2DF9EB4200F7DCF6 /* Sources */,
-				842C27DD2DF9EB4200F7DCF6 /* Frameworks */,
-				842C27DE2DF9EB4200F7DCF6 /* Resources */,
+				F9CC00412E014FDD00A7644D /* Sources */,
+				F9CC00422E014FDD00A7644D /* Frameworks */,
+				F9CC00432E014FDD00A7644D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				842C27E22DF9EB4200F7DCF6 /* PBXTargetDependency */,
+				F9CC00472E014FDD00A7644D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				842C27E32DF9EB4200F7DCF6 /* XspaceUITests */,
+				F9CC00482E014FDD00A7644D /* XSpaceUITests */,
 			);
-			name = XspaceUITests;
+			name = XSpaceUITests;
 			packageProductDependencies = (
 			);
-			productName = XspaceUITests;
-			productReference = 842C27E02DF9EB4200F7DCF6 /* XspaceUITests.xctest */;
+			productName = XSpaceUITests;
+			productReference = F9CC00452E014FDD00A7644D /* XSpaceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		842C27B82DF9EB4100F7DCF6 /* Project object */ = {
+		F9CC001D2E014FDB00A7644D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					842C27BF2DF9EB4100F7DCF6 = {
-						CreatedOnToolsVersion = 16.4;
+					F9CC00242E014FDB00A7644D = {
+						CreatedOnToolsVersion = 16.2;
 					};
-					842C27D52DF9EB4200F7DCF6 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 842C27BF2DF9EB4100F7DCF6;
+					F9CC003A2E014FDD00A7644D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = F9CC00242E014FDB00A7644D;
 					};
-					842C27DF2DF9EB4200F7DCF6 = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 842C27BF2DF9EB4100F7DCF6;
+					F9CC00442E014FDD00A7644D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = F9CC00242E014FDB00A7644D;
 					};
 				};
 			};
-			buildConfigurationList = 842C27BB2DF9EB4100F7DCF6 /* Build configuration list for PBXProject "Xspace" */;
+			buildConfigurationList = F9CC00202E014FDB00A7644D /* Build configuration list for PBXProject "XSpace" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 842C27B72DF9EB4100F7DCF6;
+			mainGroup = F9CC001C2E014FDB00A7644D;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 842C27C12DF9EB4100F7DCF6 /* Products */;
+			productRefGroup = F9CC00262E014FDB00A7644D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				842C27BF2DF9EB4100F7DCF6 /* Xspace */,
-				842C27D52DF9EB4200F7DCF6 /* XspaceTests */,
-				842C27DF2DF9EB4200F7DCF6 /* XspaceUITests */,
+				F9CC00242E014FDB00A7644D /* XSpace */,
+				F9CC003A2E014FDD00A7644D /* XSpaceTests */,
+				F9CC00442E014FDD00A7644D /* XSpaceUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		842C27BE2DF9EB4100F7DCF6 /* Resources */ = {
+		F9CC00232E014FDB00A7644D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27D42DF9EB4200F7DCF6 /* Resources */ = {
+		F9CC00392E014FDD00A7644D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27DE2DF9EB4200F7DCF6 /* Resources */ = {
+		F9CC00432E014FDD00A7644D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,21 +245,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		842C27BC2DF9EB4100F7DCF6 /* Sources */ = {
+		F9CC00212E014FDB00A7644D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27D22DF9EB4200F7DCF6 /* Sources */ = {
+		F9CC00372E014FDD00A7644D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		842C27DC2DF9EB4200F7DCF6 /* Sources */ = {
+		F9CC00412E014FDD00A7644D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,20 +269,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		842C27D82DF9EB4200F7DCF6 /* PBXTargetDependency */ = {
+		F9CC003D2E014FDD00A7644D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 842C27BF2DF9EB4100F7DCF6 /* Xspace */;
-			targetProxy = 842C27D72DF9EB4200F7DCF6 /* PBXContainerItemProxy */;
+			target = F9CC00242E014FDB00A7644D /* XSpace */;
+			targetProxy = F9CC003C2E014FDD00A7644D /* PBXContainerItemProxy */;
 		};
-		842C27E22DF9EB4200F7DCF6 /* PBXTargetDependency */ = {
+		F9CC00472E014FDD00A7644D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 842C27BF2DF9EB4100F7DCF6 /* Xspace */;
-			targetProxy = 842C27E12DF9EB4200F7DCF6 /* PBXContainerItemProxy */;
+			target = F9CC00242E014FDB00A7644D /* XSpace */;
+			targetProxy = F9CC00462E014FDD00A7644D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		842C27EA2DF9EB4200F7DCF6 /* Debug */ = {
+		F9CC004F2E014FDD00A7644D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -290,7 +290,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Xspace/Info.plist;
+				INFOPLIST_FILE = XSpace/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -300,15 +300,16 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.Xspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		842C27EB2DF9EB4200F7DCF6 /* Release */ = {
+		F9CC00502E014FDD00A7644D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -316,7 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Xspace/Info.plist;
+				INFOPLIST_FILE = XSpace/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -326,15 +327,16 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.Xspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		842C27EC2DF9EB4200F7DCF6 /* Debug */ = {
+		F9CC00512E014FDD00A7644D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -386,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -394,10 +396,11 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
-		842C27ED2DF9EB4200F7DCF6 /* Release */ = {
+		F9CC00522E014FDD00A7644D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -443,124 +446,125 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		842C27EF2DF9EB4200F7DCF6 /* Debug */ = {
+		F9CC00542E014FDD00A7644D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.XspaceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xspace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xspace";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XSpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XSpace";
 			};
 			name = Debug;
 		};
-		842C27F02DF9EB4200F7DCF6 /* Release */ = {
+		F9CC00552E014FDD00A7644D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.XspaceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xspace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xspace";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XSpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XSpace";
 			};
 			name = Release;
 		};
-		842C27F22DF9EB4200F7DCF6 /* Debug */ = {
+		F9CC00572E014FDD00A7644D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.XspaceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpaceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Xspace;
+				TEST_TARGET_NAME = XSpace;
 			};
 			name = Debug;
 		};
-		842C27F32DF9EB4200F7DCF6 /* Release */ = {
+		F9CC00582E014FDD00A7644D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woow.iapcore.XspaceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.XSpaceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Xspace;
+				TEST_TARGET_NAME = XSpace;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		842C27BB2DF9EB4100F7DCF6 /* Build configuration list for PBXProject "Xspace" */ = {
+		F9CC00202E014FDB00A7644D /* Build configuration list for PBXProject "XSpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				842C27EC2DF9EB4200F7DCF6 /* Debug */,
-				842C27ED2DF9EB4200F7DCF6 /* Release */,
+				F9CC00512E014FDD00A7644D /* Debug */,
+				F9CC00522E014FDD00A7644D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		842C27E92DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "Xspace" */ = {
+		F9CC004E2E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				842C27EA2DF9EB4200F7DCF6 /* Debug */,
-				842C27EB2DF9EB4200F7DCF6 /* Release */,
+				F9CC004F2E014FDD00A7644D /* Debug */,
+				F9CC00502E014FDD00A7644D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		842C27EE2DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "XspaceTests" */ = {
+		F9CC00532E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpaceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				842C27EF2DF9EB4200F7DCF6 /* Debug */,
-				842C27F02DF9EB4200F7DCF6 /* Release */,
+				F9CC00542E014FDD00A7644D /* Debug */,
+				F9CC00552E014FDD00A7644D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		842C27F12DF9EB4200F7DCF6 /* Build configuration list for PBXNativeTarget "XspaceUITests" */ = {
+		F9CC00562E014FDD00A7644D /* Build configuration list for PBXNativeTarget "XSpaceUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				842C27F22DF9EB4200F7DCF6 /* Debug */,
-				842C27F32DF9EB4200F7DCF6 /* Release */,
+				F9CC00572E014FDD00A7644D /* Debug */,
+				F9CC00582E014FDD00A7644D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 842C27B82DF9EB4100F7DCF6 /* Project object */;
+	rootObject = F9CC001D2E014FDB00A7644D /* Project object */;
 }

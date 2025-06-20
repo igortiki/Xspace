@@ -1,16 +1,16 @@
 //
 //  APIServiceProtocol.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/7/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 /// Defines the contract for an API service responsible for making network requests.
-protocol APIServiceProtocol {
+protocol APIServiceProtocol: Sendable {
     var baseURL: URL { get }
     func requestRawString(url: URL, method: HTTPMethod, bodyData: Data?) async throws -> String
     func fetchCompanyInfo(url: URL, method: HTTPMethod) async throws -> CompanyInfo

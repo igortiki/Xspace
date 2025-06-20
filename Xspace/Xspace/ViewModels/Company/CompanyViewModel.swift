@@ -1,13 +1,14 @@
 //
 //  CompanyViewModel.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/7/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 import Foundation
 
+@MainActor
 final class CompanyViewModel: CompanyViewModelProtocol {
     private let apiService: APIServiceProtocol
     
@@ -28,25 +29,20 @@ final class CompanyViewModel: CompanyViewModelProtocol {
     
     func fetchCompanyInfo() async {
         
-        await MainActor.run {
-            onViewStateChange?(.loading)
-        }
-        
+        onViewStateChange?(.loading)
+    
         do {
             let companyURL = apiService.baseURL.appendingPathComponent("company")
             let companyInfo = try await apiService.fetchCompanyInfo(url: companyURL, method: .get)
             
             let formatted = makeDisplayText(from: companyInfo)
             
-            await MainActor.run {
-                onViewStateChange?(.loaded(formatted))
-            }
+            onViewStateChange?(.loaded(formatted))
+            
         } catch {
             let apiError = (error as? APIError) ?? .underlying(error)
             
-            await MainActor.run {
-                onViewStateChange?(.error(apiError.userMessage))
-            }
+            onViewStateChange?(.error(apiError.userMessage))
         }
     }
 }

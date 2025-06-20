@@ -1,9 +1,9 @@
 //
 //  LaunchesViewController.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/8/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 //  ┌──────────────────────────── LaunchesViewController ───────────────────────────┐
 //  │                                                                               │
@@ -42,7 +42,6 @@ final class LaunchesViewController: UIViewController {
     private(set) var launchesViewModel: LaunchesViewModelProtocol
     private let companyViewModel: CompanyViewModelProtocol
     
-    
     // MARK: - UI Elements
     private let topBar = UIView()
     private let titleLabel = UILabel()
@@ -68,9 +67,14 @@ final class LaunchesViewController: UIViewController {
             cell.configure(with: cellViewModel)
             
             if cellViewModel.missionPatchImage == nil {
-                cellViewModel.prepareImage { [weak cell] image in
-                    cell?.updateMissionImage(image)
+                cellViewModel.prepareImage() { image in
+                    guard let image = image else { return }
+                    DispatchQueue.main.async { [weak cell] in
+                        cell?.updateMissionImage(image)
+                    }
                 }
+            } else {
+                cell.updateMissionImage(cellViewModel.missionPatchImage)
             }
             
             return cell
@@ -95,7 +99,9 @@ final class LaunchesViewController: UIViewController {
         setupLayout()
         
         setupBindings()
+        
         fetchData()
+        
     }
     
     private func setupStateView() {
@@ -109,14 +115,19 @@ final class LaunchesViewController: UIViewController {
         ])
     }
     
+    @MainActor
     private func fetchData() {
-        Task {
-            async let companyTask: () = companyViewModel.fetchCompanyInfo()
-            async let launchesTask: () = launchesViewModel.loadNextPage()
-            
-            _ = await (companyTask, launchesTask)
+        let companyVM = companyViewModel
+        let launchesVM = launchesViewModel
+        
+        Task { @MainActor in
+            async let company: () = companyVM.fetchCompanyInfo()
+            async let launches: () = launchesVM.loadNextPage()
+            _ = await (company, launches)
         }
     }
+    
+    // Call site
     
     // MARK: - Layout Setup
     private func setupLayout() {
@@ -281,7 +292,7 @@ extension LaunchesViewController {
                 self.handleCompanyData(message)
             }
         }
-    
+        
         launchesViewModel.onViewStateChange = { [weak self] state in
             guard let self = self else { return }
             
@@ -296,7 +307,7 @@ extension LaunchesViewController {
         }
     }
     
-   private func handleCompanyData(_ text: String) {
+    private func handleCompanyData(_ text: String) {
         companyDescriptionLabel.text = text
     }
     
@@ -381,7 +392,7 @@ extension LaunchesViewController {
     
     private func presentFilters() {
         let currentFilters = launchesViewModel.currentFilters
-
+        
         let filtersViewModel = FiltersViewModel(filterModel: currentFilters)
         let filtersVC = FiltersViewController(viewModel: filtersViewModel)
         

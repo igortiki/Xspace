@@ -1,13 +1,13 @@
 //
 //  APIServiceTests.swift
-//  Xspace
+//  Devskiller
 //
 //  Created by Igor Malasevschi on 6/12/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 import XCTest
-@testable import Xspace
+@testable import XSpace
 
 final class APIServiceTests: XCTestCase {
     
