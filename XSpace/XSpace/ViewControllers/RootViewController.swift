@@ -16,7 +16,6 @@ final class RootViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setupInitialScreen()
     }
     

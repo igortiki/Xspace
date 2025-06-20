@@ -101,7 +101,6 @@ final class LaunchesViewController: UIViewController {
         setupBindings()
         
         fetchData()
-        
     }
     
     private func setupStateView() {
@@ -127,15 +126,37 @@ final class LaunchesViewController: UIViewController {
         }
     }
     
-    // Call site
-    
     // MARK: - Layout Setup
     private func setupLayout() {
         setupTopBar()
+        setupTopLeftMenu()
         setupCompanyHeader()
         setupTableView()
         setupBottomSection()
         setupStateView()
+    }
+    
+    private func setupTopLeftMenu() {
+        let menuIcon = UIImage(systemName: "line.horizontal.3")
+        let menuButton = UIButton(type: .system)
+        menuButton.setImage(menuIcon, for: .normal)
+        menuButton.tintColor = .label
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(menuButton)
+        
+        NSLayoutConstraint.activate([
+            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            menuButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            menuButton.widthAnchor.constraint(equalToConstant: 32),
+            menuButton.heightAnchor.constraint(equalToConstant: 32)
+        ])
+        
+        let action = UIAction { [weak self] _ in
+            guard let self,
+                  let container = self.parent?.parent as? MainContainerViewController else { return }
+            container.toggleMenu()
+        }
+        menuButton.addAction(action, for: .touchUpInside)
     }
     
     private func setupTopBar() {
@@ -152,7 +173,6 @@ final class LaunchesViewController: UIViewController {
         filterButton.addAction(UIAction { [weak self] _ in
             self?.presentFilters()
         }, for: .touchUpInside)
-        
         
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -177,12 +197,12 @@ final class LaunchesViewController: UIViewController {
     private func setupCompanyHeader() {
         companySectionLabel.text = companyViewModel.topHeaderSection
         companySectionLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        companySectionLabel.backgroundColor = UIColor.systemGray6
         companySectionLabel.textAlignment = .left
         companySectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        companySectionLabel.textColor = UIColor(white: 0.95, alpha: 1)
         
         let companyBackgroundView = UIView()
-        companyBackgroundView.backgroundColor = UIColor.systemGray6
+        companyBackgroundView.backgroundColor = UIColor(red: 28/255, green: 36/255, blue: 58/255, alpha: 1)
         companyBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         companyBackgroundView.addSubview(companySectionLabel)
         
@@ -200,6 +220,7 @@ final class LaunchesViewController: UIViewController {
         
         let descriptionContainer = UIView()
         descriptionContainer.translatesAutoresizingMaskIntoConstraints = false
+        descriptionContainer.backgroundColor = .systemBackground
         descriptionContainer.addSubview(companyDescriptionLabel)
         
         NSLayoutConstraint.activate([
@@ -213,7 +234,6 @@ final class LaunchesViewController: UIViewController {
         headerContainer.axis = .vertical
         headerContainer.spacing = 8
         headerContainer.translatesAutoresizingMaskIntoConstraints = false
-        headerContainer.backgroundColor = .white
         headerContainer.layer.cornerRadius = 8
         headerContainer.layer.borderWidth = 1
         headerContainer.layer.borderColor = UIColor.separator.cgColor
@@ -243,9 +263,10 @@ final class LaunchesViewController: UIViewController {
         launchesSectionLabel.font = UIFont.boldSystemFont(ofSize: 20)
         launchesSectionLabel.textAlignment = .left
         launchesSectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        launchesSectionLabel.textColor = UIColor(white: 0.95, alpha: 1)
         
         let launchesBackgroundView = UIView()
-        launchesBackgroundView.backgroundColor = UIColor.systemGray6
+        launchesBackgroundView.backgroundColor = UIColor(red: 28/255, green: 36/255, blue: 58/255, alpha: 1)
         launchesBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         launchesBackgroundView.addSubview(launchesSectionLabel)
         
@@ -260,7 +281,6 @@ final class LaunchesViewController: UIViewController {
         let bottomStack = UIStackView(arrangedSubviews: [launchesBackgroundView, tableView])
         bottomStack.axis = .vertical
         bottomStack.translatesAutoresizingMaskIntoConstraints = false
-        bottomStack.backgroundColor = .secondarySystemBackground
         bottomStack.layer.cornerRadius = 8
         bottomStack.layer.borderWidth = 1
         bottomStack.layer.borderColor = UIColor.separator.cgColor
@@ -276,7 +296,6 @@ final class LaunchesViewController: UIViewController {
             bottomStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
     }
-    
 }
 
 // MARK: - ViewModel Bindings & State Handling

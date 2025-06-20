@@ -3,7 +3,7 @@
 //  XSpace
 //
 //  Created by Igor Malasevschi on 17.06.2025.
-//
+//  Copyright © 2025 XSpace. All rights reserved.
 
 import UIKit
 

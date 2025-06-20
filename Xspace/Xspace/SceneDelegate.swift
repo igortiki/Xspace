@@ -3,7 +3,7 @@
 //  XSpace
 //
 //  Created by Igor Malasevschi on 17.06.2025.
-//
+//  Copyright © 2025 XSpace. All rights reserved.
 
 import UIKit
 
@@ -15,8 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = RootViewController()
+        
+        
+        let mainVC = RootViewController() // or your main screen
+        let containerVC = MainContainerViewController(mainViewController: mainVC)
+        window?.rootViewController = containerVC
         window?.makeKeyAndVisible()
+        
+        //window?.rootViewController = RootViewController()
+        //window?.overrideUserInterfaceStyle = .dark
+        //window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

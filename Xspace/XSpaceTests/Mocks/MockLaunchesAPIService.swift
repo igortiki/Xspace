@@ -11,23 +11,25 @@ import UIKit
 @testable import XSpace
 
 final class MockLaunchesAPIService: APIServiceProtocol {
-    
+
     // MARK: - Test Configuration
-    
     let baseURL: URL = URL(string: "https://mock.api")!
     
     let launchResponse: XSpace.LaunchesResponse?
     let rocketResponse: XSpace.RocketResponse?
     let error: Error?
+    let image: UIImage?
     
     // MARK: - Initialization
         init(
             launchResponse: XSpace.LaunchesResponse? = nil,
             rocketResponse: XSpace.RocketResponse? = nil,
+            image: UIImage? = nil,
             error: Error? = nil
         ) {
             self.launchResponse = launchResponse
             self.rocketResponse = rocketResponse
+            self.image = image
             self.error = error
         }
 
@@ -61,6 +63,12 @@ final class MockLaunchesAPIService: APIServiceProtocol {
         }
         return response
     }
-
+    
+    func asyncImage(from url: URL) async throws -> UIImage {
+        if error != nil {
+            throw APIError.imageDecodingFailed
+        }
+        return image ?? UIImage()
+    }
 }
 
