@@ -1,15 +1,16 @@
 //
 //  FiltersViewModel.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/10/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
+import SwiftUI
 
-final class FiltersViewModel: FiltersViewModelProtocol {
+final class FiltersViewModel: ObservableObject {
     
-    private(set) var filterModel: LaunchFiltersModel
+    @Published private(set) var filterModel: LaunchFiltersModel
 
     
     init(filterModel: LaunchFiltersModel = .empty) {
@@ -27,6 +28,8 @@ final class FiltersViewModel: FiltersViewModelProtocol {
     var sortOrderLabelText: String { "Sort Order" }
 
     var applyButtonTitle: String { "Apply Filters" }
+    
+    var resetButtonTitle: String { "Reset Filters" }
 
     var successOptions: [String] { ["All", "Success only"] }
 
@@ -38,15 +41,17 @@ final class FiltersViewModel: FiltersViewModelProtocol {
         set { filterModel.selectedYears = Array(newValue).sorted() }
     }
 
-    var successOnly: Bool {
-        get { filterModel.successOnly }
-        set { filterModel.successOnly = newValue }
+    var successFilter: Int {
+        get { filterModel.successOnly ? 1 : 0 }
+        set { filterModel.successOnly = (newValue == 1) }
     }
 
-    var sortOrderAscending: Bool {
-        get { filterModel.sortOrderAscending }
-        set { filterModel.sortOrderAscending = newValue }
+    
+    var sortOrder: Int {
+        get { filterModel.sortOrderAscending ? 0 : 1 }
+        set { filterModel.sortOrderAscending = (newValue == 0) }
     }
+
 
     func resetFilters() {
         filterModel = .empty

@@ -1,9 +1,9 @@
 //
 //  LoadState.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 13.06.2025.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 

@@ -1,19 +1,33 @@
 //
 //  APIService.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/7/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
 import Foundation
+import SwiftUI
+
+actor ImageCacheActor {
+    private let cache = NSCache<NSURL, UIImage>()
+    
+    func image(for url: NSURL) -> UIImage? {
+        cache.object(forKey: url)
+    }
+    
+    func setImage(_ image: UIImage, for url: NSURL) {
+        cache.setObject(image, forKey: url)
+    }
+}
 
 /// Service responsible for making network API calls.
 final class APIService: APIServiceProtocol {
     
     // MARK: - Properties
-    private(set) var baseURL: URL
-    private(set) var session: any URLSessionProtocol
+    let baseURL: URL
+    private let session: any URLSessionProtocol
+    private static let imageCache = ImageCacheActor()
     
     // MARK: - Initialization
     init(baseURL: URL?, session: URLSessionProtocol) throws {
@@ -22,6 +36,31 @@ final class APIService: APIServiceProtocol {
         }
         self.baseURL = baseURL
         self.session = session
+    }
+    
+
+    // MARK: - Image Loading
+     func asyncImage(from url: URL) async throws -> UIImage {
+        let nsUrl = url as NSURL
+        
+        if let cached = await Self.imageCache.image(for: nsUrl) {
+            return cached
+        }
+        
+        let request = URLRequest(url: url)
+        let (data, response) = try await session.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw APIError.badStatusCode((response as? HTTPURLResponse)?.statusCode ?? 0)
+        }
+        
+        guard let image = UIImage(data: data) else {
+            throw APIError.imageDecodingFailed
+        }
+        
+        await Self.imageCache.setImage(image, for: nsUrl)
+        
+        return image
     }
     
     // MARK: - Generic Request
@@ -112,5 +151,3 @@ final class APIEnvironment {
         self.apiService = try APIService(baseURL: Self.baseURL, session: Self.session)
     }
 }
-
-

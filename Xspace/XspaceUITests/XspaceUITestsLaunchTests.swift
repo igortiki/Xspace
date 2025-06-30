@@ -1,13 +1,13 @@
 //
-//  XspaceUITestsLaunchTests.swift
-//  XspaceUITests
+//  XSpaceUITestsLaunchTests.swift
+//  XSpaceUITests
 //
-//  Created by Admin on 6/11/25.
+//  Created by Malasevschi, Igor (Cognizant) on 17.06.2025.
 //
 
 import XCTest
 
-final class XspaceUITestsLaunchTests: XCTestCase {
+final class XSpaceUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

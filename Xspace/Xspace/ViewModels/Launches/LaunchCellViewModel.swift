@@ -1,34 +1,40 @@
 //
 //  LaunchCellViewModel.swift
-//  Xspace
+//  XSpace
 //
 //  Created by Igor Malasevschi on 6/9/25.
-//  Copyright © 2025 Xspace. All rights reserved.
+//  Copyright © 2025 XSpace. All rights reserved.
 //
 
-// LaunchCellViewModel.swift
-import UIKit
 
+import SwiftUI
 
-final class LaunchCellViewModel: LaunchCellViewModelProtocol {
+@MainActor
+final class LaunchCellViewModel: ObservableObject, Identifiable {
     
-    // MARK: - Properties
+    // MARK: - Published Properties
+    @Published var missionPatchImage: Image? = nil
+
+    // MARK: - Identifiers
+    let id: String
+
+    // MARK: - Private Properties
     private var imageLoadTask: Task<Void, Never>?
     private let apiService: APIServiceProtocol
     private let enrichedLaunch: EnrichedLaunch
-    private(set) var missionPatchImage: UIImage?
-    
-    // MARK: - Initialization
+
+    // MARK: - Init
     init(enrichedLaunch: EnrichedLaunch, apiService: APIServiceProtocol) {
         self.enrichedLaunch = enrichedLaunch
         self.apiService = apiService
+        self.id = enrichedLaunch.launch.id
     }
-    
+
     // MARK: - Computed Properties
     var missionName: String {
         "Mission: \(enrichedLaunch.launch.name)"
     }
-    
+
     var rocketDescription: String {
         if let rocket = enrichedLaunch.rocket {
             return "Rocket: \(rocket.name) / \(rocket.type)"
@@ -36,66 +42,58 @@ final class LaunchCellViewModel: LaunchCellViewModelProtocol {
             return "Rocket: \"Unknown / N/A."
         }
     }
-    
-    var successIcon: UIImage? {
-        UIImage(systemName: enrichedLaunch.launch.success == true ? "checkmark.circle" : "xmark.octagon")
+
+    var successIcon: Image {
+        Image(systemName: enrichedLaunch.launch.success == true ? "checkmark.circle" : "xmark.octagon")
     }
-    
-    var successIconTintColor: UIColor {
-        enrichedLaunch.launch.success == true ? .systemGreen : .systemRed
+
+    var successIconTintColor: Color {
+        enrichedLaunch.launch.success == true ? .green : .red
     }
-    
+
     var dateTimeString: String {
         let date = FormatterHelper.formattedDate(from: enrichedLaunch.launch.dateUnix)
         let time = FormatterHelper.formattedTime(from: enrichedLaunch.launch.dateUnix)
         return "Date/Time: \(date) at \(time)"
     }
-    
+
     var daysSinceText: String {
         let signed = FormatterHelper.signedDaysDifference(from: enrichedLaunch.launch.dateUnix)
         return "Days: \(signed)"
     }
-    
+
     var fromNowText: String {
         let launchDate = Date(timeIntervalSince1970: TimeInterval(enrichedLaunch.launch.dateUnix))
         let word = launchDate < Date() ? "Since" : "From"
         let relative = FormatterHelper.relativeDate(from: enrichedLaunch.launch.dateUnix)
         return "\(word) now: \(relative)"
     }
-    
+
     // MARK: - Image Handling
-    
-    /// Fetches mission patch image from URL and stores it
-    private func fetchAndStoreMissionPatchImage(from urlString: String?) async -> UIImage? {
-        guard let urlString = urlString,
-              let url = URL(string: urlString) else {
-            return nil
-        }
-        
-        return try? await apiService.asyncImage(from: url)
-    }
-    
-    /// Prepares image and calls completion handler on main thread
-    func prepareImage(completion: @escaping (UIImage?) -> Void) {
+    func loadMissionImageIfNeeded() {
+        guard missionPatchImage == nil else { return }
+
         imageLoadTask?.cancel()
-        
-        imageLoadTask = Task { [weak self] in
-            guard let self = self else { return }
-            
-            let image = await self.fetchAndStoreMissionPatchImage(
-                from: self.enrichedLaunch.launch.links?.patch?.small
-            )
-            self.missionPatchImage = image
-            
-            await MainActor.run {
-                completion(image)
+        imageLoadTask = Task {
+            if let uiImage = await fetchUIImage() {
+                missionPatchImage = Image(uiImage: uiImage)
+            } else {
+                missionPatchImage = nil
             }
         }
     }
-    
+
     func cancelImageLoad() {
         imageLoadTask?.cancel()
         imageLoadTask = nil
     }
-}
 
+    private func fetchUIImage() async -> UIImage? {
+        guard let urlString = enrichedLaunch.launch.links?.patch?.small,
+              let url = URL(string: urlString) else {
+            return nil
+        }
+
+        return try? await apiService.asyncImage(from: url)
+    }
+}
