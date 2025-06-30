@@ -166,12 +166,12 @@ final class FiltersViewController: UIViewController {
     }
     
     private func setupResetButton() {
-        let resetAction = UIAction(title: "Reset Filters") { [weak self] _ in
+        let resetAction = UIAction(title: viewModel.resetButtonTitle) { [weak self] _ in
             self?.handleReset()
         }
 
         var config = UIButton.Configuration.plain()
-        config.title = "Reset Filters"
+        config.title = viewModel.resetButtonTitle
         config.baseForegroundColor = .systemRed
 
         let resetButton = UIButton(configuration: config, primaryAction: resetAction)

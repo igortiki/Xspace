@@ -12,6 +12,7 @@ protocol FiltersViewModelProtocol {
     var launchSuccessLabelText: String { get }
     var sortOrderLabelText: String { get }
     var applyButtonTitle: String { get }
+    var resetButtonTitle: String { get }
     var successOptions: [String] { get }
     var sortOrderOptions: [String] { get }
     var selectedYears: Set<Int> { get set }

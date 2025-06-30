@@ -8,7 +8,7 @@
 
 
 final class FiltersViewModel: FiltersViewModelProtocol {
-    
+   
     private(set) var filterModel: LaunchFiltersModel
 
     
@@ -23,6 +23,8 @@ final class FiltersViewModel: FiltersViewModelProtocol {
     var launchYearsLabelText: String { "Launch Years" }
 
     var launchSuccessLabelText: String { "Launch Success" }
+    
+    var resetButtonTitle: String { "Reset Filters" }
 
     var sortOrderLabelText: String { "Sort Order" }
 
